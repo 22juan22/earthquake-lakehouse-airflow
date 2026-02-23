@@ -27,9 +27,11 @@ Flujo de procesamiento:
 USGS API (JSON)
 
    ↓
+   
 Raw Layer
 
    ↓
+   
 Bronze Layer
 
    ↓
@@ -37,6 +39,7 @@ Bronze Layer
 Silver Layer
 
    ↓
+   
 Gold Layer (Modelo Estrella)
 
    ↓
