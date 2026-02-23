@@ -1,42 +1,63 @@
-# 🌍 Earthquake Lakehouse – Medallion Architecture with Airflow
+# 🌍 Earthquake Lakehouse – Arquitectura Medallion con Airflow
 
-## 🚀 Project Overview
+## 🚀 Descripción del Proyecto
 
-End-to-end Data Engineering project implementing a Lakehouse architecture using:
+Proyecto end-to-end de Ingeniería de Datos que implementa una arquitectura Lakehouse utilizando el patrón Medallion (Raw, Bronze, Silver, Gold), orquestado con Apache Airflow y visualizado en Power BI.
 
-- Apache Airflow (Orchestration)
-- Dockerized Environment
-- Python
-- Parquet Storage
-- Medallion Architecture (Raw, Bronze, Silver, Gold)
-- Dimensional Modeling (Star Schema)
-- Power BI Dashboard
+Este proyecto simula un entorno productivo de procesamiento de datos sísmicos obtenidos desde la API pública de USGS.
 
 ---
 
-## 🏗 Architecture
+## 🛠 Tecnologías Utilizadas
 
-Medallion pattern:
+- Apache Airflow (Orquestación de pipelines)
+- Docker (Entorno contenerizado)
+- Python
+- Almacenamiento en formato Parquet
+- Arquitectura Medallion
+- Modelado Dimensional (Esquema Estrella)
+- Power BI (Visualización)
 
-Raw → Bronze → Silver → Gold
+---
 
-### 🔹 Raw
-- Ingestion of earthquake data from USGS API (JSON)
+## 🏗 Arquitectura del Proyecto
 
-### 🔹 Bronze
-- Structured parquet conversion
-- Basic normalization
+Flujo de procesamiento:
 
-### 🔹 Silver
-- Data cleaning
-- Deduplication
-- Type standardization
-- Quality filters
+USGS API (JSON)
+   ↓
+Raw Layer
+   ↓
+Bronze Layer
+   ↓
+Silver Layer
+   ↓
+Gold Layer (Modelo Estrella)
+   ↓
+Power BI
 
-### 🔹 Gold
-- Star Schema design
-- Fact table: `fact_earthquakes`
-- Dimensions:
+---
+
+## 🔹 Capas de la Arquitectura
+
+### 🟤 Raw
+- Ingesta de datos en formato JSON desde API externa.
+- Conservación de datos originales.
+
+### 🟠 Bronze
+- Conversión a formato estructurado (Parquet).
+- Normalización inicial.
+
+### ⚪ Silver
+- Limpieza de datos.
+- Eliminación de duplicados.
+- Estandarización de tipos.
+- Validaciones básicas de calidad.
+
+### 🟡 Gold
+- Implementación de modelo dimensional (Star Schema).
+- Tabla de hechos: `fact_earthquakes`
+- Tablas de dimensiones:
   - dim_date
   - dim_location
   - dim_event_type
@@ -44,31 +65,47 @@ Raw → Bronze → Silver → Gold
 
 ---
 
-## 📊 Analytics & Visualization
+## ⭐ Modelo Dimensional
 
-Power BI dashboard built on dimensional model:
+El modelo en la capa Gold sigue un esquema estrella:
 
-- Temporal trend analysis
-- Magnitude distribution
-- Depth vs Magnitude correlation
-- Geospatial mapping
-- Tsunami impact analysis
+- fact_earthquakes (tabla de hechos)
+- dim_date
+- dim_location
+- dim_event_type
+- dim_status
 
----
-
-## 🧠 Data Engineering Concepts Applied
-
-- ETL orchestration with Airflow
-- TaskGroups
-- Docker containerization
-- Parquet-based lakehouse
-- Dimensional modeling
-- Clean separation of layers
-- Git version control
+Esto permite análisis eficientes en herramientas de BI.
 
 ---
 
-## 🛠 How to Run
+## 📊 Dashboard en Power BI
+
+Se desarrolló un dashboard analítico que permite:
+
+- Análisis temporal de actividad sísmica.
+- Tendencias de magnitud promedio.
+- Visualización geográfica de eventos.
+- Relación profundidad vs magnitud.
+- Análisis de eventos con alerta de tsunami.
+
+---
+
+## 🧠 Conceptos de Ingeniería Aplicados
+
+- Orquestación de procesos ETL con Airflow.
+- Uso de TaskGroups.
+- Arquitectura Lakehouse basada en Medallion.
+- Modelado dimensional.
+- Separación clara de capas.
+- Versionamiento con Git.
+- Contenerización con Docker.
+
+---
+
+## ▶️ Cómo Ejecutar el Proyecto
+
+1. Clonar el repositorio:
 
 ```bash
-docker compose up -d
+git clone https://github.com/tuusuario/earthquake-lakehouse-airflow.git
