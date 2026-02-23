@@ -25,15 +25,22 @@ Este proyecto simula un entorno productivo de procesamiento de datos sísmicos o
 Flujo de procesamiento:
 
 USGS API (JSON)
+
    ↓
 Raw Layer
+
    ↓
 Bronze Layer
+
    ↓
+   
 Silver Layer
+
    ↓
 Gold Layer (Modelo Estrella)
+
    ↓
+   
 Power BI
 
 ---
