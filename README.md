@@ -118,4 +118,4 @@ Se desarrolló un dashboard analítico que permite:
 1. Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tuusuario/earthquake-lakehouse-airflow.git
+git clone https://github.com/22juan22/earthquake-lakehouse-airflow.git
